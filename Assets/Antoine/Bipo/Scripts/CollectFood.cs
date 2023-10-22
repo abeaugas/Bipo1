@@ -20,7 +20,7 @@ public class CollectFood : MonoBehaviour{
         agent.destination = foodSource.position;
 
         // Arreter lorsque la destination est atteinte
-        if(agent.isStopped = agent.remainingDistance <= 0){
+        if(agent.isStopped = agent.remainingDistance <= 0.5f){
             return 1;
         }else return 0;
     }
