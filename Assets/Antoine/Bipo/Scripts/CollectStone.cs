@@ -14,12 +14,12 @@ public class CollectStone : MonoBehaviour{
     }
 
     // Update is called once per frame
-    int Update(){
+    public bool goCollect(){
         // Définir la destination : pierre
         agent.destination = stoneSource.position;
 
         // Arreter lorsque la destination est atteinte
-        if(agent.isStopped = agent.remainingDistance <= 4) return 1;
-        else return 0;
+        if(agent.isStopped = agent.remainingDistance <= 4) return true;
+        else return false;
     }
 }

@@ -15,7 +15,7 @@ public class CollectFood : MonoBehaviour{
     }
 
     // Update is called once per frame
-    int Update(){
+    public int goCollect(){
         // Définir la destination : pierre
         agent.destination = foodSource.position;
 
