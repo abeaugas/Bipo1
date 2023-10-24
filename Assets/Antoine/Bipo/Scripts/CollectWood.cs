@@ -13,12 +13,12 @@ public class CollectWood : MonoBehaviour{
     }
 
     // Update is called once per frame
-    public int goCollect(){
+    public bool goCollect(){
         // Définir la destination : pierre
         agent.destination = woodSource.position;
 
         // Arreter lorsque la destination est atteinte
-        if(agent.isStopped = agent.remainingDistance <= 0.5f) return 1;
-        else return 0;
+        if(agent.isStopped = agent.remainingDistance <= 0.5f) return true;
+        else return false;
     }
 }

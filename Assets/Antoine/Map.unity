@@ -628,6 +628,7 @@ MonoBehaviour:
   collectWood: {fileID: 1669929173}
   collectFood: {fileID: 1669929174}
   dropRessource: {fileID: 1669929172}
+  animator: {fileID: 1669929175}
 --- !u!1001 &320169326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3520,6 +3521,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodSource: {fileID: 909061813}
+--- !u!95 &1669929175 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6103827430316071404, guid: 1e377f3b9abd94349b07b18a7f062b3f, type: 3}
+  m_PrefabInstance: {fileID: 1099439267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1693432378
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,19 +6,22 @@ using UnityEngine.AI;
 public class DropRessource : MonoBehaviour{
     public Transform reserve;
     private NavMeshAgent agent;
+    public bool finished = false;
 
     // Start is called before the first frame update
     void Start(){
         agent = GetComponent<NavMeshAgent>();
     }
 
+    void update(){
+        // Si la destination est atteinte on prévient
+        if(agent.isStopped = agent.remainingDistance <= 2) finished = true;
+    }
+
     // Update is called once per frame
-    public int goCollect(){
+    public void goCollect(){
         // Définir la destination : pierre
         agent.destination = reserve.position;
-
-        // Arreter lorsque la destination est atteinte
-        if(agent.isStopped = agent.remainingDistance <= 2) return 1;
-        else return 0;
+        finished = false;
     }
 }

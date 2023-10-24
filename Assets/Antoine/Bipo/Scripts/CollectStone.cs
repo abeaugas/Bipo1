@@ -7,19 +7,22 @@ public class CollectStone : MonoBehaviour{
     public Transform stoneSource;
     private NavMeshAgent agent;
     private GameObject reserve;
+    public bool finished = false;
 
     // Start is called before the first frame update
     void Start(){
         agent = GetComponent<NavMeshAgent>();
     }
 
+    void update(){
+        // Si la destination est atteinte on prévient
+        if(agent.isStopped = agent.remainingDistance <= 4) finished = true;
+    }
+
     // Update is called once per frame
-    public bool goCollect(){
+    public void goCollect(){
         // Définir la destination : pierre
         agent.destination = stoneSource.position;
-
-        // Arreter lorsque la destination est atteinte
-        if(agent.isStopped = agent.remainingDistance <= 4) return true;
-        else return false;
+        finished = false;
     }
 }
