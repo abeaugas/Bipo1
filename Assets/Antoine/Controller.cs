@@ -3,41 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Controller : MonoBehaviour{
-    [SerializeField] CollectStone collectStone;
-    [SerializeField] CollectWood collectWood;
-    [SerializeField] CollectFood collectFood;
-    [SerializeField] DropRessource dropRessource;
-
+    [SerializeField] CollectItem collectionLogic;
     [SerializeField] Animator animator;
+    [SerializeField] GameObject stone;
+    [SerializeField] GameObject tree;
+    [SerializeField] GameObject farm;
+    [SerializeField] GameObject sign;
+
+    public int nbMining = 0;
+    public int nbChopping = 0;
+    public int nbFarming = 0;
+    public int nbIdle = 0;
+
+    private bool carrying;
 
     // Start is called before the first frame update
     void Start(){
-        goMine();
+        // Collecter de la pierre
+        carrying = false;
+        goPickupObject(stone);
     }
 
     // Update is called once per frame
     void Update(){
-        // Collecte de pierre terminé
-        if(collectStone.finished){
+        // Trajet terminé
+        if(collectionLogic.finished && !carrying){
             animator.SetBool("Walking", false);
             animator.SetBool("Mining", true);
-            animator.SetBool("Mining", false);
-            goDrop();
+            animator.SetBool("Carrying", true);
+            goPickupObject(sign);
+            carrying = true;
         }
-        // Dépose terminée
-        if(dropRessource.finished){
-            animator.SetBool("Carrying", false);
-            goMine();
+        // Dépose de la ressource terminée
+        if(collectionLogic.finished && carrying){
+            carrying = false;
+            goPickupObject(stone);
         }
+
     }
 
-    void goMine(){
+    void goPickupObject(GameObject obj){
         animator.SetBool("Walking", true);
-        collectStone.goCollect();
-    }
-
-    void goDrop(){
-        animator.SetBool("Carrying", true);
-        dropRessource.goCollect();
+        collectionLogic.goCollect(obj);
     }
 }

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CollectStone : MonoBehaviour{
-    public Transform stoneSource;
+public class CollectItem : MonoBehaviour{
     private NavMeshAgent agent;
     private GameObject reserve;
     public bool finished = false;
@@ -12,17 +11,21 @@ public class CollectStone : MonoBehaviour{
     // Start is called before the first frame update
     void Start(){
         agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = 2f;
+        finished = false;
     }
 
-    void update(){
-        // Si la destination est atteinte on prévient
-        if(agent.isStopped = agent.remainingDistance <= 4) finished = true;
+    void Update(){
+        if( ( agent.velocity.x <= 0.1f )  && ( agent.remainingDistance <= agent.stoppingDistance ) && !finished ){
+            Debug.Log("Agent stopped");
+            finished = true;
+        }
     }
 
     // Update is called once per frame
-    public void goCollect(){
+    public void goCollect(GameObject obj){
         // Définir la destination : pierre
-        agent.destination = stoneSource.position;
+        agent.destination = obj.transform.position;
         finished = false;
     }
 }
