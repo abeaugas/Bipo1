@@ -54,6 +54,7 @@ public class UIBoutonControllerTableau : MonoBehaviour
         GestionBipoTest.addBipoBucheron=0;
         GestionBipoTest.addBipoFarm = 0;
         GestionBipoTest.addBipoZzz = 0;
+            
         }
     }
 }
