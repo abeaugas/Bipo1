@@ -19,7 +19,7 @@ public class leController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Collecter de la pierre
+       
         appeltableau();
         
     }
@@ -43,6 +43,19 @@ public class leController : MonoBehaviour
                 if (e.finished && e.iscarrying())
                 {
                 e.carrying = false;
+                if (e.state == 1)
+                {
+                    GestionBipo.npierre++;
+                }
+                if (e.state == 2)
+                {
+                    GestionBipo.nbois++;
+                }
+                if (e.state == 3)
+                    {
+                        GestionBipo.nourriture++;
+                    }
+                
                 e.goPickup();
                 }
             }

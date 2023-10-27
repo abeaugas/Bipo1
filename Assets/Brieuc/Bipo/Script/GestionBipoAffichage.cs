@@ -13,7 +13,7 @@ public class GestionBipo : MonoBehaviour
 
     static public int npierre = 0;
     static public int nbois = 0;
-    static public int nouriturre = 0;
+    static public int nourriture = 0;
 
     public Text Textm;  
     public Text Textb;
@@ -36,6 +36,6 @@ public class GestionBipo : MonoBehaviour
         Textz.text = " x " + bipoZzz.ToString();
         stone.text =npierre.ToString();
         wood.text =nbois.ToString();
-        food.text =nouriturre.ToString();
+        food.text =nourriture.ToString();
     }
 }

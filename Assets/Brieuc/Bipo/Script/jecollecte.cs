@@ -15,6 +15,8 @@ public class jecollecte : MonoBehaviour
     [SerializeField] GameObject tree;
     [SerializeField] GameObject farm;
     [SerializeField] GameObject sign;
+    [SerializeField] GameObject pickaxe;
+    [SerializeField] GameObject axe;
     public int state = 0;
     // Start is called before the first frame update
     void Start()
@@ -55,17 +57,22 @@ public class jecollecte : MonoBehaviour
         if (state == 1)
         {
             animator.SetBool("Mining", true);
+            axe.SetActive(false);
+            pickaxe.SetActive(true);
 
         }
         else if (state == 2)
         {
             animator.SetBool("Chopping", true);
+            pickaxe.SetActive(false);
+            axe.SetActive(true);
 
         }
         else if (state == 3)
         {
             animator.SetBool("Farming", true);
-
+            axe.SetActive(false);
+            pickaxe.SetActive(false);
         }
     }
     public void goPickup()
