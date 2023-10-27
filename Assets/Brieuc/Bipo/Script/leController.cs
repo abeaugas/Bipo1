@@ -33,12 +33,11 @@ public class leController : MonoBehaviour
                 jecollecte e = b.GetComponent<jecollecte>();
                 if ((e.finished) && (!e.iscarrying()))
                  {
-                    e.animator.SetBool("Walking", false);
-                    e.working();
-                // mettre la tempo?
-                    e.carrying = true;
-                    e.goPickupObject(sign);
-                 }
+                e.working();
+                e.carrying =true;
+                e.goPickupObject(sign);
+                    
+            }
             // Dépose de la ressource terminée
                 if (e.finished && e.iscarrying())
                 {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,19 +18,22 @@ public class jecollecte : MonoBehaviour
     [SerializeField] GameObject sign;
     [SerializeField] GameObject pickaxe;
     [SerializeField] GameObject axe;
-    public int state = 0;
+    public int state;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = 2f;
-        finished = true;
+        finished = false;
         carrying = false;
+        axe.SetActive(false);
+        pickaxe.SetActive(false);
+        state = 0;
     }
 
     void Update()
     {
-        if ((agent.velocity.x <= 0.1f) && (agent.remainingDistance <= agent.stoppingDistance) && !finished)
+        if ((agent.velocity.x <= 0.1f) && (agent.remainingDistance <= agent.stoppingDistance) && !finished && state!=0)
         {
             finished = true;
         }
@@ -56,10 +60,12 @@ public class jecollecte : MonoBehaviour
     {
         if (state == 1)
         {
-            animator.SetBool("Mining", true);
+            animator.SetBool("Walking", false);
             axe.SetActive(false);
             pickaxe.SetActive(true);
-
+            animator.SetBool("Mining", true);
+            animator.SetBool("Mining", false);
+            animator.SetBool("Carrying", true);
         }
         else if (state == 2)
         {
@@ -94,5 +100,7 @@ public class jecollecte : MonoBehaviour
 
         }
     }
+
+
 }
 
